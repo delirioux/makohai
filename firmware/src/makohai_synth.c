@@ -1201,6 +1201,41 @@ static void midi_lanes(void)                            /* ISR, each block: the 
         }
     }
 }
+/* the load guard, as Felucca's (Tuna, Sill, Daurade): two blocks in a row above 85 % of the time a block has, and
+ * one voice goes at the next block, one more each block while it lasts. First the quietest that is fading out (an
+ * echo's tail, a drum's ring), else the oldest held one, never the newest note of the lead or the bass. A safety
+ * net under LIMIT: LIMIT keeps the count of voices, this keeps the time */
+#ifndef SHED_US
+#define SHED_US (5805u * 85u / 100u)
+#endif
+static uint8_t shed_over, shed_req;
+static volatile uint32_t shed_count;                    /* voices the guard took (SETUP shows it) */
+static void shed_voice(void)
+{
+    uint32_t v, best = NVOICE, keep[2] = {NVOICE, NVOICE}, l;
+    int32_t ba = 0x7FFFFFFF;
+    for (v = 0; v < NVOICE; v++) {                                  /* a fading one, the quietest */
+        const voice_t *x = &vc[v];
+        if (x->kind == V_OFF || !(x->stage == 2u || (x->kind != V_FM && x->kind < V_WASH) || !x->key)) continue;
+        if (x->amp < ba) { ba = x->amp; best = v; }
+    }
+    if (best == NVOICE) {
+        static const uint8_t KL[2] = {L_LEAD, L_BASS};
+        uint32_t old = 0;
+        for (l = 0; l < 2u; l++)                                    /* the lead's and the bass's newest stay */
+            for (v = VLO[KL[l]]; v < VHI[KL[l]]; v++)
+                if (vc[v].kind == V_FM && (keep[l] == NVOICE || (int32_t)(vc[v].age - vc[keep[l]].age) > 0)) keep[l] = v;
+        for (v = 0; v < NVOICE; v++) {                              /* else the oldest held one */
+            uint32_t age = vage - vc[v].age;
+            if (vc[v].kind == V_OFF || v == keep[0] || v == keep[1]) continue;
+            if (best == NVOICE || age > old) { old = age; best = v; }
+        }
+    }
+    if (best == NVOICE) return;
+    if (vc[best].midi) { mo_push(0x80u | vc[best].midi_ch, vc[best].midi, 0); vc[best].midi = 0; }
+    vc[best].kind = V_OFF;
+    shed_count++;
+}
 static void app_audio(int32_t *out, uint32_t n)
 {
     uint32_t t0 = fm1_ticks(), i = 0, l, k;
@@ -1209,6 +1244,7 @@ static void app_audio(int32_t *out, uint32_t n)
         for (k = 0; k < n; k++) bus[l][k] = 0;
     if (aud_req) { uint8_t nt[3] = {(uint8_t)aud_note, (uint8_t)(62 + key_off), 0}; fire(aud_lane, nt, 1, 0, aud_lane == L_SFX ? 33075u : 9000u, 256, aud_kind, 0); aud_req = 0; }
     mm_drain();
+    if (shed_req) { shed_req = 0; shed_voice(); }
     live_run();
     {
         int clk = clk_out_on && !clk_ext;
@@ -1324,6 +1360,8 @@ static void app_audio(int32_t *out, uint32_t n)
     vis_step = seq_step;
     vis_frac = seq_step_len_q8 ? (seq_acc_q8 >> 8) * 65536u / (seq_step_len_q8 >> 8 ? seq_step_len_q8 >> 8 : 1u) : 0u;
     isr_us_last = (fm1_ticks() - t0) / FM1_TICKS_PER_US;
+    shed_over = (uint8_t)(shed_over << 1 | (isr_us_last > SHED_US));   /* the guard: two over in a row */
+    if ((shed_over & 3u) == 3u) shed_req = 1;
     if (isr_us_last > isr_us_max) isr_us_max = isr_us_last;
     isr_us_sum += isr_us_last; isr_n++;
 }

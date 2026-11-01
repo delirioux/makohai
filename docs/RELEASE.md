@@ -1,3 +1,9 @@
+Since 1.3:
+
+- SETUP shows the version and the CPU (the sound's load), as Tuna and Sill do.
+- A load guard, as Felucca's: past 85 % of the time twice in a row, one voice goes each block, the lead's and the
+  bass's newest note never; SETUP counts them.
+
 Makohai 1.3: eight new styles, 48 new sounds, MIDI both ways.
 
 - Eight new styles: DUB (105, the one drop), TRIBAL (125), FABLE (150), PC FM (125), BOOGIE (125, the shuffle),

@@ -1255,6 +1255,7 @@ static void draw_setup_info(void)
     x = 234 - tw7("%");
     text7(x, LANE_Y + 60, "%", C_MUTE);
     textr(x - 3, LANE_Y + 48, t, C_CYAN, 2);
+    if (shed_count) { o = s_int(t, (int32_t)shed_count); s_cat(o, shed_count == 1u ? " VOICE SHED" : " VOICES SHED"); text7(64, LANE_Y + 60, t, C_DIMG); }   /* the load guard's work */
     text7(6, LANE_Y + 76, "GPL-3.0, ON FELUCCA AND DINGHY", C_DIMG);
 }
 static void s_kib(char *o, uint32_t b) { o = s_int(o, (int32_t)((b + 512u) / 1024u)); s_cat(o, "K"); }
@@ -2463,7 +2464,7 @@ static void app_pass(void)
     if (seq_playing && !edit_on && cur_bar() != oct_bar) { oct_bar = cur_bar(); follow_oct(sel, 0); }   /* the keys go where the lane plays */
     midi_in();
     midi_cc_out();
-    if (setup_on) { int32_t c = cpu_now(); if (c != cpu_shown) { cpu_shown = c; area_dirty = 1; } }   /* SETUP's CPU: a reading every half second */
+    if (setup_on) { static uint32_t shed_seen; int32_t c = cpu_now(); if (c != cpu_shown || shed_count != shed_seen) { cpu_shown = c; shed_seen = shed_count; area_dirty = 1; } }   /* SETUP's CPU: a reading every half second */
     if (launch_bar >= 0 && cur_bar() >= launch_bar) { commit_launch(); toast("LAUNCHED"); }
     if (seq_playing && end_from >= 0 && cur_bar() >= end_from + END_LEN) { start_stop(0); toast("THE END"); }
     fx_apply();

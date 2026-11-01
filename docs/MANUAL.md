@@ -99,6 +99,11 @@ the oldest. The styles alone stay under 80; ECHO on many lanes would go past it,
 time (a crack across the whole sound). If LOAD ever goes near 100 %, lower LIMIT; if notes seem to vanish and LOAD
 stays well under, raise it. SAVE keeps LIMIT.
 
+Under LIMIT sits a **load guard**, as in Tuna, Sill and Daurade: when the sound takes more than 85 % of its time
+twice in a row (filters, drive and echo on many lanes can do that even within LIMIT), one voice goes at once, and
+one more each 6 ms while it lasts: first the quietest one fading out, else the oldest held one, never the newest
+note of the lead or the bass. SETUP shows how many it took beside the CPU; if that number grows, lower LIMIT.
+
 SAVE keeps the setup with everything else. SYSTEM and AUDIO only show; they are how a firmware that runs short of
 memory or time is caught before it crackles or crashes. In the browser, SYSTEM shows N/A (there is no FM-1 memory
 there).
