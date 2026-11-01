@@ -59,7 +59,9 @@ A group is a button; pressed again, it steps to its next setting, as PRESETS doe
 
 ## Setup
 
-Hold **HOME** for SETUP; HOME (or any group button, or EDIT) leaves it. PRESETS steps through its rows:
+Hold **HOME** for SETUP; HOME (or any group button, or EDIT) leaves it. Where the lanes are, SETUP shows what
+Makohai is (its version) and the **CPU**: how much of its time the sound takes, as a share, read every half second
+(as Tuna's MENU and Sill's show it; under about 90 % it plays clean). PRESETS steps through its rows:
 
 | SETUP | KNOB 1 | KNOB 2 | KNOB 3 | KNOB 4 |
 | --- | --- | --- | --- | --- |

@@ -1238,6 +1238,25 @@ static void sys_poll(void)
     sys_mem(&sysm);
     if (isr_n != isr_n0) { isr_avg_us = (isr_us_sum - isr_sum0) / (isr_n - isr_n0); isr_sum0 = isr_us_sum; isr_n0 = isr_n; }
 }
+/* SETUP's panel (where the lanes are): what Makohai is, and the CPU (the audio's load, its average over half a
+ * second) as Tuna's MENU > SYSTEM > INFO and Sill's MENU show it: a row, its value in the theme, the unit small */
+static int32_t cpu_shown = -1;
+static int32_t cpu_now(void) { sys_poll(); return clampi((int32_t)(isr_avg_us * 100u / 5805u), 0, 100); }
+static void draw_setup_info(void)
+{
+    char t[24], *o;
+    int32_t x;
+    o = s_cat(t, "MAKOHAI "); s_cat(o, MAKOHAI_VERSION);
+    text(6, LANE_Y + 2, t, C_CREAM, 2);
+    text7(6, LANE_Y + 29, "TRACKER GROOVES FOR THE FM-1", C_MUTE);
+    fill(6, LANE_Y + 43, 228, 1, C_GRID);
+    text(6, LANE_Y + 48, "CPU", C_CREAM, 2);
+    s_int(t, cpu_shown < 0 ? cpu_now() : cpu_shown);
+    x = 234 - tw7("%");
+    text7(x, LANE_Y + 60, "%", C_MUTE);
+    textr(x - 3, LANE_Y + 48, t, C_CYAN, 2);
+    text7(6, LANE_Y + 76, "GPL-3.0, ON FELUCCA AND DINGHY", C_DIMG);
+}
 static void s_kib(char *o, uint32_t b) { o = s_int(o, (int32_t)((b + 512u) / 1024u)); s_cat(o, "K"); }
 static void v_free(char *o, uint32_t b) { sys_poll(); if (!sysm.known) s_cat(o, "N/A"); else s_kib(o, b); }
 static void t_none(int32_t d) { (void)d; }
@@ -1684,6 +1703,7 @@ static void draw_frame(int force)
         if (view == 1) draw_edit_area();
         else if (view == 2) draw_song_area();
         else if (view == 3) draw_arc_area();
+        else if (setup_on) draw_setup_info();                             /* SETUP: what it is, the CPU */
         else for (l = 0; l < (int32_t)NLANE; l++) draw_lane(LROW[l], LANE_Y + l * (LH + GAP), LH, 0);
         cs_end();
         platform_poll();
@@ -2443,6 +2463,7 @@ static void app_pass(void)
     if (seq_playing && !edit_on && cur_bar() != oct_bar) { oct_bar = cur_bar(); follow_oct(sel, 0); }   /* the keys go where the lane plays */
     midi_in();
     midi_cc_out();
+    if (setup_on) { int32_t c = cpu_now(); if (c != cpu_shown) { cpu_shown = c; area_dirty = 1; } }   /* SETUP's CPU: a reading every half second */
     if (launch_bar >= 0 && cur_bar() >= launch_bar) { commit_launch(); toast("LAUNCHED"); }
     if (seq_playing && end_from >= 0 && cur_bar() >= end_from + END_LEN) { start_stop(0); toast("THE END"); }
     fx_apply();

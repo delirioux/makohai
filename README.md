@@ -42,7 +42,7 @@ the kind of setting, PRESETS steps through them.
 </tr>
 <tr>
 <td align="center"><img src="docs/screens/edit.png" width="240" alt="EDIT, the drums"><br><b>EDIT</b>: the lane's own part, bar by bar, up to 512 bars, in scale steps from the chord root; the drums' nine hits by row. RECORD live, an effect column per step, undo, bar and range tools, FILL a bar from any style, COPY another lane's part; after your last bar: LOOP, PROFILE or MY STYLE (new bars in your manner).</td>
-<td align="center"><img src="docs/screens/setup.png" width="240" alt="SETUP, LOOK"><br><b>SETUP</b> (hold HOME): the palette, the screen's level and the lights; the lanes' MIDI channels; back to defaults.</td>
+<td align="center"><img src="docs/screens/setup.png" width="240" alt="SETUP, LOOK"><br><b>SETUP</b> (hold HOME): the version and the CPU; the palette, the screen's level and the lights; the lanes' MIDI channels; back to defaults.</td>
 <td></td>
 </tr>
 <tr>
