@@ -56,7 +56,10 @@ static void recovery_main(void)
     recovery_last = recovery_usb_last = fm1_ticks();
     recovery_fraction = fm1_ms = 0;
     /* No persist_boot or OTA cleanup: no flash write just for entering rescue. */
-    flash_ok = FL_FAR(fl_jedec_ram)() == 0x856014u;
+    {
+        uint32_t flash_id = FL_FAR(fl_jedec_ram)();
+        flash_ok = flash_id == 0x856014u || flash_id == 0xB36014u;   /* as the app (platform.c): UC25HQ80 too (Felucca #320) */
+    }
     lcd_init();
     lcd_fill(0, 0, 240, 240, C_BLACK);
     draw_text_box(0, 64, 240, &FONT_S, APP_NAME " USB RESCUE", C_WHITE, 1);
