@@ -1,5 +1,7 @@
-Since 1.3:
+Makohai 1.4: newer FM-1 units, the CPU on SETUP, a load guard.
 
+- Newer FM-1 units: their UC25HQ80 flash (JEDEC 0xB36014) is recognised, so they save, take updates and the USB
+  rescue works (Felucca's fix for its issue #320; 1.3 and earlier ran there without saving anything).
 - SETUP shows the version and the CPU (the sound's load), as Tuna and Sill do.
 - A load guard, as Felucca's: past 85 % of the time twice in a row, one voice goes each block, the lead's and the
   bass's newest note never; SETUP counts them.
