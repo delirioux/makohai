@@ -417,7 +417,8 @@ void fm1_cstart(void)
     fm1_boot.p3_rst = (uint8_t)p3;
     if (boot_mode == BOOT_RECOVERY || recovery_key())
         recovery_main();                        /* OCT- at power-on: the USB rescue */
-    flash_ok = FL_FAR(fl_jedec_ram)() == 0x856014u;
+    uint32_t flash_id = FL_FAR(fl_jedec_ram)();
+    flash_ok = flash_id == 0x856014u || flash_id == 0xB36014u; /* known 1 MiB parts (UC25HQ80 in newer units, Felucca #320), else RAM-only */
     ota_boot_cleanup();
     lcd_init();
     lcd_fill(0, 0, 240, 240, C_BLACK);
