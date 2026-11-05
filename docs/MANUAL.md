@@ -69,7 +69,7 @@ Makohai is (its version) and the **CPU**: how much of its time the sound takes, 
 | MIDI | the lead's channel | the pad's | the bass's | the drums' (1..16 or OFF) |
 | MIDI 2 | the arp's channel | LANES (a picture) | STEREO (a picture) | SPECTRUM (a picture) |
 | SYNC | CLK OUT: MIDI clock and START / CONTINUE / STOP out, on or off | CLK IN: follow a MIDI clock (EXT and its tempo while one comes in) | NOTES IN: MIDI notes play the marked lane | CC OUT: the lanes' settings as controllers |
-| BACK | a picture behind the whole screen: OFF or one of the thirteen below | its brightness, 10..60 % (30) | CYCLE: the next picture every 4, 8 or 16 bars, or OFF | PREVIEW: the picture itself |
+| BACK | a picture behind the whole screen: OFF or one of the thirteen below (it starts on CRYSTAL) | its brightness, 10..60 % (30) | CYCLE: the next picture every 4, 8 or 16 bars (8), or OFF | PREVIEW: the picture itself |
 | RESET | defaults: five clicks to the right puts everything back as it comes (patterns cleared); SAVE keeps it | a picture (turn: the next) | a picture | a picture |
 | SYSTEM | stack: free, of 23 K (the least it has had free since power-on) | the interrupts' stack: the same, of 7 K | RAM free | the pool free (the big buffers) |
 | AUDIO | the audio interrupt's worst time, µs | its average over the last half second | the worst as a share of the 5805 µs it has | any knob here starts the worst again |

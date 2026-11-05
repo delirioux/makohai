@@ -1,3 +1,8 @@
+Since 1.4:
+
+- BACK is on from the start: CRYSTAL behind the screen, the next picture every 8 bars (a saved setting keeps
+  yours).
+
 Makohai 1.4: newer FM-1 units, the CPU on SETUP, a load guard.
 
 - Newer FM-1 units: their UC25HQ80 flash (JEDEC 0xB36014) is recognised, so they save, take updates and the USB

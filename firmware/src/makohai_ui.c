@@ -1060,7 +1060,7 @@ static void v_vis(char *o) { o[0] = 0; }
 
 /* BACK (SETUP): a picture behind the whole screen, on every page, dimmed so all stays clear; the lanes' bands glow over
  * it. CYCLE moves on to the next picture every 4, 8 or 16 bars, with a cut */
-static int32_t back_pic, back_dim = 30, back_cyc;                             /* 0 = none, else a picture + 1; how bright, %; CYCLE */
+static int32_t back_pic = 1, back_dim = 30, back_cyc = 2;                     /* 0 = none, else a picture + 1 (CRYSTAL to start); how bright, %; CYCLE (8 bars) */
 static int32_t back_next, back_last = -1;
 static uint32_t back_t0, back_len, back_ms0;
 static int32_t back_tr, back_type;
@@ -2298,7 +2298,7 @@ static void defaults(void)
     fxu[L_LEAD].vary = 40;
     set_key(2); set_bpm(125); scale_sel = 0; prog_sel = 0; bpc = 1; energy = 0; space = 35;
     arc_on = 0; build_ph = 6; peak_ph = 4; auto_drop = 1; target = PROF_START; blend = 0;
-    palette = 0; screen_lvl = 100; glow_on = 1; back_pic = 0; back_dim = 30; back_cyc = 0; fm1_glow_all();
+    palette = 0; screen_lvl = 100; glow_on = 1; back_pic = 1; back_dim = 30; back_cyc = 2; fm1_glow_all();   /* BACK on: CRYSTAL, the next every 8 bars */
     voice_limit = VOICE_LIMIT0; pick[0] = 0; pick[1] = 1; pick[2] = 2; clk_out_on = clk_in_on = notes_in_on = cc_out_on = 1;
     if (seq_playing) invalidate_from(cur_bar()); else form_arm();
     area_dirty = 1;
