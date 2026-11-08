@@ -1,0 +1,10 @@
+{
+  "what": "A generative groovebox in the style of early-90s tracker music. Six lanes play parts composed live in one of eighteen styles: you mix styles instead of programming steps, shape each lane with filters, wobble and tracker effects, and build to a drop, with demo-style pictures on the screen.",
+  "author": "delirioux",
+  "kinds": [
+    "groove"
+  ],
+  "play": "https://delirioux.github.io/makohai/try/",
+  "image": "docs/card.png",
+  "color": "#F26A3A"
+}
