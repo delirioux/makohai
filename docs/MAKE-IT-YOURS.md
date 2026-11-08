@@ -1,6 +1,6 @@
 # Make it yours
 
-Dinghy is meant to be copied. This is how a copy becomes your firmware, gets released, and gets into the
+[Dinghy](https://github.com/zvenson/dinghy) is meant to be copied. This is how a copy becomes your firmware, gets released, and gets into the
 [FM-1 Firmware Hub](https://fm1.designburgapps.com) next to the others.
 
 ## 1. Copy
@@ -29,7 +29,7 @@ hub use it to tell firmwares apart: two firmwares with the same identity look li
   `--release` line under it).
 - Keep the form `FM-1_9` + two digits if you can: the web installers then also finish an install that was cut
   off halfway (they resume only the update loaders they know, `FM-1_9NN`).
-- Taken so far: `900` SLOOP, `91N` Felucca, `93N` sloopDX, `97N` zp12, `98N` (a Doom port), `99N` Dinghy, and others
+- Taken so far: `900` [SLOOP](https://github.com/isod89/sloop-fm1), `91N` [Felucca](https://github.com/hugelton/Felucca), `93N` sloopDX, `97N` zp12, `98N` (a Doom port), `99N` Dinghy, and others
   in the hub's list. There is no registry yet: look at the hub, and ask there if you are unsure.
 
 ## 4. Release

@@ -14,7 +14,7 @@ installer are in.
 | What | Agreed |
 | --- | --- |
 | Home | GitHub, `github.com/delirioux/makohai`, branch `main`, public. |
-| Upstream | Built on [Dinghy](https://github.com/zvenson/dinghy) 0.3, which carries Felucca's FM-1 platform as SLOOP has it. Never push to Felucca or Dinghy. Platform files (`platform.c`, `usb.c`, `ota.c`, `lcd.c`, `gfx.c`, `libc.c`, `recovery.c`) are touched only where Makohai hooks in. |
+| Upstream | Built on [Dinghy](https://github.com/zvenson/dinghy) 0.3, which carries [Felucca](https://github.com/hugelton/Felucca)'s FM-1 platform as [SLOOP](https://github.com/isod89/sloop-fm1) has it. Never push to Felucca or Dinghy. Platform files (`platform.c`, `usb.c`, `ota.c`, `lcd.c`, `gfx.c`, `libc.c`, `recovery.c`) are touched only where Makohai hooks in. |
 | Language | English throughout: code, comments, commits, docs. |
 | Licence | GPL-3.0-only, as Dinghy and Felucca. JieLi SDK files in the package under Apache-2.0 ([LICENSING.md](../LICENSING.md)). |
 | Commits | Author `delirioux <340923392+delirioux@users.noreply.github.com>`. Work done with Claude ends with the `Co-Authored-By` and `Claude-Session` lines. |
@@ -57,7 +57,7 @@ stand-in.
   kit, noise effects) and very little of Felucca's sound code. Dinghy gives the platform alone: boot, USB,
   updates, screen, panel, settings.
 - **Integers only.** No FPU use, no 64-bit division ([RULES.md](RULES.md)). CI fails on any soft-float or 64-bit
-  division routine in the image: a soft-float routine is what crashed an FM-1 running Tuna.
+  division routine in the image: a soft-float routine is what crashed an FM-1 running [Tuna](https://github.com/delirioux/tuna).
 - **One translation unit, checked for names.** C merges two `static` file-scope variables of the same name
   into one without a word, and an enum constant the platform also has fails only the firmware build. Makohai's MIDI queue once shared its counters with the USB driver's that way, and the
   FM-1 froze on PLAY. `tools/check_names.py` runs in CI and catches it.

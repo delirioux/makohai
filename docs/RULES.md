@@ -1,7 +1,7 @@
 # The chip's rules
 
 The FM-1 runs a JieLi AC791N with JieLi's own clang (pi32v2). It is fast enough for a lot of synth, but it
-has habits. These are the ones that cost the SLOOP / sloopDX / zp12 people time; the build catches most of them.
+has habits. These are the ones that cost the [SLOOP](https://github.com/isod89/sloop-fm1) / sloopDX / zp12 people time; the build catches most of them.
 
 ## Integers only
 

@@ -61,7 +61,7 @@ A group is a button; pressed again, it steps to its next setting, as PRESETS doe
 
 Hold **HOME** for SETUP; HOME (or any group button, or EDIT) leaves it. Where the lanes are, SETUP shows what
 Makohai is (its version) and the **CPU**: how much of its time the sound takes, as a share, read every half second
-(as Tuna's MENU and Sill's show it; under about 90 % it plays clean). PRESETS steps through its rows:
+(as [Tuna](https://github.com/delirioux/tuna)'s MENU and [Sill](https://github.com/delirioux/sill)'s show it; under about 90 % it plays clean). PRESETS steps through its rows:
 
 | SETUP | KNOB 1 | KNOB 2 | KNOB 3 | KNOB 4 |
 | --- | --- | --- | --- | --- |
@@ -99,7 +99,7 @@ the oldest. The styles alone stay under 80; ECHO on many lanes would go past it,
 time (a crack across the whole sound). If LOAD ever goes near 100 %, lower LIMIT; if notes seem to vanish and LOAD
 stays well under, raise it. SAVE keeps LIMIT.
 
-Under LIMIT sits a **load guard**, as in Tuna, Sill and Daurade: when the sound takes more than 85 % of its time
+Under LIMIT sits a **load guard**, as in Tuna, Sill and [Daurade](https://github.com/delirioux/daurade): when the sound takes more than 85 % of its time
 twice in a row (filters, drive and echo on many lanes can do that even within LIMIT), one voice goes at once, and
 one more each 6 ms while it lasts: first the quietest one fading out, else the oldest held one, never the newest
 note of the lead or the bass. SETUP shows how many it took beside the CPU; if that number grows, lower LIMIT.

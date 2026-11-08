@@ -178,7 +178,7 @@ drops out. `dinghy.c` saves 2 s after the last change, once all voices are silen
 
 The build prints what you use and fails above the limits.
 
-Flash (1 MiB) as Dinghy uses it: the app, the update staging area (0xE0000, the platform's) and the settings
+Flash (1 MiB) as [Dinghy](https://github.com/zvenson/dinghy) uses it: the app, the update staging area (0xE0000, the platform's) and the settings
 sector (0xFC000). The other firmwares of the family keep their data in 0x97000..0xFBFFF; a new firmware simply
 finds its own magic missing and starts fresh. To store more (samples, patterns), widen `FL_RANGE_OK` in
 platform.c to the range you pick: it is the guard that keeps a bug from erasing anything else.
