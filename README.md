@@ -1,3 +1,5 @@
+**Patched for FM-1 units with the new chipset.**
+
 <p align="center"><img src="assets/logo.png" width="480" alt="Makohai"></p>
 
 # Makohai
