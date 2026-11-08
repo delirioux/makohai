@@ -19,7 +19,7 @@ complete source under the same licence too.
 | --- | --- | --- |
 | DotGothic16 (cut to printable ASCII), the browser page's knob labels: `web/emu/fonts/` | SIL OFL 1.1 | `web/emu/fonts/OFL.txt` |
 | Terminus font (ter-u16n), rendered into `firmware/gen/felucca_font.h`: all of Makohai's screen text, and the platform's rescue and update screens | SIL OFL 1.1 | `assets/fonts/Terminus-LICENSE.txt` |
-| JieLi AC79 SDK: `uboot.boot`, `cfg_tool.bin`, `eq_cfg_hw.bin` are read from your SDK checkout at build time and placed in the package; no SDK files are in this tree | Apache-2.0 (`LICENSES/Apache-2.0.txt`) | <https://gitee.com/Jieli-Tech/fw-AC79_AIoT_SDK> |
+| JieLi AC79 SDK: `uboot.boot`, `cfg_tool.bin`, `eq_cfg_hw.bin` are kept in `vendor/jieli-ac79` and placed in the package at build time | Apache-2.0 (`LICENSES/Apache-2.0.txt`) | <https://gitee.com/Jieli-Tech/fw-AC79_AIoT_SDK> |
 
 ## The logo
 
