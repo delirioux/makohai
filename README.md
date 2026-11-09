@@ -1,5 +1,7 @@
 **Patched for FM-1 units with the new chipset.**
 
+**[Quick cheat sheet](docs/CHEATSHEET.md): every control and what it does.**
+
 <p align="center"><img src="assets/logo.png" width="480" alt="Makohai"></p>
 
 # Makohai
