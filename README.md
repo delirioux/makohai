@@ -191,3 +191,5 @@ GPL-3.0-only. Makohai is built on [Dinghy](https://github.com/zvenson/dinghy) (z
 [SLOOP](https://github.com/isod89/sloop-fm1) (isod89) has it. Details in [LICENSING.md](LICENSING.md).
 
 "M-VAVE" and "FM-1" belong to their owners. Makohai is not made or endorsed by them.
+
+You can also try Makohai in the browser, no flashing needed, in the free community [FM-1 Emulator](https://fm1-emulator.atst.tools/).
